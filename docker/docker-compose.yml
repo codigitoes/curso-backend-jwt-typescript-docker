@@ -1,0 +1,71 @@
+version: "3.3"
+#----------------------------------------------------------
+# definicion de la red y rango de ips
+#
+# 172.27.3 ip net
+#----------------------------------------------------------
+networks:
+  curso-typescript-network:
+    ipam:
+      config:
+        - subnet: 172.27.3.0/24
+services:
+  curso-typescript-mongodb:
+    image: mongo
+    container_name: "curso-typescript.mongodb"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
+      - MONGO_INITDB_DATABASE=curso-typescript
+    volumes:
+      - ../mongodb:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+    hostname: curso-typescript.mongodb
+    networks:
+      curso-typescript-network:
+        ipv4_address: 172.27.3.11
+    command: mongod  --quiet --logpath /dev/null  --bind_ip 127.0.0.1,172.27.3.11
+
+  curso-typescript-mongo-express:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=172.27.3.11
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=curso-typescript
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    links:
+      - curso-typescript-mongodb
+    ports:
+      - 8888:8081
+    restart: unless-stopped
+    extra_hosts:
+      - "mongodb:172.27.3.11"
+    networks:
+      curso-typescript-network:
+        ipv4_address: 172.27.3.12
+
+  curso-typescript.api:
+    user: "1000:1000"
+    build: api
+    container_name: "curso-typescript.api"
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - ../api/:/var/www/vhosts/curso-typescript/
+    hostname: curso-typescript.api
+    extra_hosts:
+      - "mongodb:172.27.3.11"
+    networks:
+      curso-typescript-network:
+        ipv4_address: 172.27.3.10
+    links:
+      - curso-typescript-mongodb

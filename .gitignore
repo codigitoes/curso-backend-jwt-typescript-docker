@@ -1,0 +1,12 @@
+mongodb/*
+api/node_modules
+api/coverage
+.vscode
+frontend/node_modules
+frontend/coverage
+**/.env
+api/uploads
+api/dist
+admin/dist
+frontend/dist
+

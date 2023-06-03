@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES2019",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "strict": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "strictNullChecks": true,
+      "noImplicitAny": true,
+      "outDir": "./dist"
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules", "dist", "tests/rules/paths"],
+  }
