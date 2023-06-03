@@ -9,6 +9,7 @@ class MongooseConnection {
         try {
             await mongoose.connection.close();
         } catch (_) {
+            /* empty */
         }
     };
 }
