@@ -1,7 +1,7 @@
 {
-  "name": "curso-typescript.es.api",
+  "name": "curso-backend-jwt-typescript.es.api",
   "version": "1.0.0",
-  "description": "curso-typescript.es api",
+  "description": "curso-backend-jwt-typescript.es api",
   "main": "./dist/server.js",
   "scripts": {
     "lint": "eslint --fix . --ext .ts,.tsx ./src",
@@ -12,7 +12,7 @@
     "dist": "rm -r ./dist; tsc && cp .env dist/",
     "clean": "rm -r ./dist; exit 0"
   },
-  "author": "mArKitos <curso-typescript.es@gmail.com>",
+  "author": "mArKitos <curso-backend-jwt-typescript.es@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "7.6.0",
