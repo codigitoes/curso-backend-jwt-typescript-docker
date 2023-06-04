@@ -1,12 +1,13 @@
+import Email from '../src/core/user/email';
+import Name from '../src/core/user/name';
 import User from '../src/core/user/user';
+import UserMother from './mother/user.mother';
 
 describe('user model', () => {
-    it('should create with name and email', () => {
-        const name = 'any name';
-        const email = 'any email';
-        const sut: User = new User(name, email);
+    it('should create with name and email as value object', () => {
+        const sut: User = UserMother.User();
 
-        expect(sut.name).toStrictEqual(name);
-        expect(sut.email).toStrictEqual(email);
+        expect(sut.name).toBeInstanceOf(Name);
+        expect(sut.email).toBeInstanceOf(Email);
     });
 });
