@@ -7,23 +7,31 @@ class Name {
     }
 
     private validateOrThrowException(value: string) {
-        if (
-            this.isValidLength(value) === false ||
-            this.isValidFormat(value) === false
-        ) {
-            throw new Error();
+        this.validateLengthOrThrowException(value);
+        this.validateFormatOrThrowException(value);
+    }
+
+    private validateFormatOrThrowException(value: string): void {
+        if (/^[a-zA-Z]+[a-zA-Z\s]+[a-zA-Z]+$/.test(value)) {
+            return;
         }
+
+        this.throwException();
     }
 
-    private isValidFormat(value: string): boolean {
-        return /^[a-zA-Z]+[a-zA-Z\s]+[a-zA-Z]+$/.test(value);
+    private validateLengthOrThrowException(value: string): void {
+        if (
+            value.length >= Name.MINIMUM_LENGTH &&
+            value.length <= Name.MAXIMUM_LENGTH
+        ) {
+            return;
+        }
+
+        this.throwException();
     }
 
-    private isValidLength(value: string): boolean {
-        return (
-            value.length < Name.MINIMUM_LENGTH ||
-            value.length > Name.MAXIMUM_LENGTH === false
-        );
+    private throwException(): void {
+        throw new Error();
     }
 }
 
