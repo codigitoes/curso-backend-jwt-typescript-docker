@@ -2,6 +2,7 @@ import Email from '../../src/core/user/email';
 import Name from '../../src/core/user/name';
 import { faker } from '@faker-js/faker';
 import User from '../../src/core/user/user';
+import Password from '../../src/core/user/password';
 
 class UserMother {
     public static Name(name?: string): Name {
@@ -17,6 +18,14 @@ class UserMother {
         );
     }
 
+    public static Password(password?: string): Password {
+        return new Password(
+            password
+                ? password
+                : faker.internet.password(Password.MINIMUM_LENGTH + 1)
+        );
+    }
+
     public static NameEmpty(): Name {
         return new Name('');
     }
@@ -27,6 +36,18 @@ class UserMother {
 
     public static NameTooLong(): Name {
         return new Name('a'.repeat(Name.MAXIMUM_LENGTH + 1));
+    }
+
+    public static PasswordEmpty(): Password {
+        return new Password('');
+    }
+
+    public static PasswordTooShort(): Password {
+        return new Password('a'.repeat(Password.MINIMUM_LENGTH - 1));
+    }
+
+    public static PasswordTooLong(): Password {
+        return new Password('a'.repeat(Password.MAXIMUM_LENGTH + 1));
     }
 
     public static User(email?: string, name?: string): User {
