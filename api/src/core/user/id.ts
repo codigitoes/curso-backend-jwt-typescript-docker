@@ -2,8 +2,6 @@ import InvalidUserIdException from '../domain/exception/invalid-user-id-exceptio
 import crypto from 'crypto';
 
 class Id {
-    public static FIXED_LENGTH: number = 36;
-
     public static random(): Id {
         return new Id(Id.generateRandomUuidV4());
     }
@@ -25,23 +23,11 @@ class Id {
     }
 
     private validateOrThrowException(uuid: string) {
-        this.validateLengthOrThrowException(uuid);
         this.validateFormatOrThrowException(uuid);
     }
 
     private validateFormatOrThrowException(uuid: string): void {
         if (Id.isValid(uuid)) {
-            return;
-        }
-
-        this.throwException();
-    }
-
-    private validateLengthOrThrowException(value: string): void {
-        if (
-            value.length >= Id.FIXED_LENGTH &&
-            value.length <= Id.FIXED_LENGTH
-        ) {
             return;
         }
 
