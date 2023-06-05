@@ -1,3 +1,5 @@
+import InvalidUserNameException from '../domain/exception/invalid-user-name-exception';
+
 class Name {
     public static MINIMUM_LENGTH: number = 3;
     public static MAXIMUM_LENGTH: number = 25;
@@ -31,7 +33,7 @@ class Name {
     }
 
     private throwException(): void {
-        throw new Error();
+        throw new InvalidUserNameException();
     }
 }
 

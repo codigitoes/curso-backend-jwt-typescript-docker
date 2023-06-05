@@ -1,3 +1,5 @@
+import InvalidUserPasswordException from '../domain/exception/invalid-user-password-exception';
+
 class Password {
     public static MINIMUM_LENGTH: number = 3;
     public static MAXIMUM_LENGTH: number = 100;
@@ -22,7 +24,7 @@ class Password {
     }
 
     private throwException(): void {
-        throw new Error();
+        throw new InvalidUserPasswordException();
     }
 }
 

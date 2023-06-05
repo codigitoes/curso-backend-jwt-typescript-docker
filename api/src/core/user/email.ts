@@ -1,3 +1,5 @@
+import InvalidUserEmailException from '../domain/exception/invalid-user-email-exception';
+
 class Email {
     public constructor(public readonly value: string) {
         this.validateOrThrowException(value);
@@ -20,7 +22,7 @@ class Email {
     }
 
     private throwException(): void {
-        throw new Error();
+        throw new InvalidUserEmailException();
     }
 }
 

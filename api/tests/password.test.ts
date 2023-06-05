@@ -1,3 +1,4 @@
+import InvalidUserPasswordException from '../src/core/domain/exception/invalid-user-password-exception';
 import Name from '../src/core/user/name';
 import UserMother from './mother/user.mother';
 
@@ -11,18 +12,18 @@ describe('password', () => {
     it('should throw an error on empty value', () => {
         expect(() => {
             UserMother.PasswordEmpty();
-        }).toThrow();
+        }).toThrowError(InvalidUserPasswordException);
     });
 
     it('should throw an error on short value', () => {
         expect(() => {
             UserMother.PasswordTooShort();
-        }).toThrow();
+        }).toThrowError(InvalidUserPasswordException);
     });
 
     it('should throw an error on long value', () => {
         expect(() => {
             UserMother.PasswordTooLong();
-        }).toThrow();
+        }).toThrowError(InvalidUserPasswordException);
     });
 });

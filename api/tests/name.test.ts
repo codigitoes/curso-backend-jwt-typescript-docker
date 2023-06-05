@@ -1,3 +1,4 @@
+import InvalidUserNameException from '../src/core/domain/exception/invalid-user-name-exception';
 import Name from '../src/core/user/name';
 import UserMother from './mother/user.mother';
 
@@ -12,31 +13,31 @@ describe('name', () => {
     it('should throw an error on empty value', () => {
         expect(() => {
             UserMother.NameEmpty();
-        }).toThrow();
+        }).toThrowError(InvalidUserNameException);
     });
 
     it('should throw an error on short value', () => {
         expect(() => {
             UserMother.NameTooShort();
-        }).toThrow();
+        }).toThrowError(InvalidUserNameException);
     });
 
     it('should throw an error on long value', () => {
         expect(() => {
             UserMother.NameTooLong();
-        }).toThrow();
+        }).toThrowError(InvalidUserNameException);
     });
 
     it('should throw an error on wrong format, valid its only letters spaces', () => {
         expect(() => {
             UserMother.Name('123456789');
-        }).toThrow();
+        }).toThrowError(InvalidUserNameException);
     });
 
     it('should throw an error on wrong format, valid its only letters spaces', () => {
         expect(() => {
             UserMother.Name('     s     s    ');
-        }).toThrow();
+        }).toThrowError(InvalidUserNameException);
     });
 
     it('should throw an error on wrong format, valid its only letters spaces', () => {

@@ -1,3 +1,4 @@
+import InvalidUserEmailException from '../src/core/domain/exception/invalid-user-email-exception';
 import UserMother from './mother/user.mother';
 
 describe('email', () => {
@@ -14,15 +15,15 @@ describe('email', () => {
     it('should throw error on non valid email', () => {
         expect(() => {
             UserMother.Email('@email.com');
-        }).toThrow();
+        }).toThrowError(InvalidUserEmailException);
         expect(() => {
             UserMother.Email('email@email.');
-        }).toThrow();
+        }).toThrowError(InvalidUserEmailException);
         expect(() => {
             UserMother.Email('@email.com');
-        }).toThrow();
+        }).toThrowError(InvalidUserEmailException);
         expect(() => {
             UserMother.Email('email@@email.com');
-        }).toThrow();
+        }).toThrowError(InvalidUserEmailException);
     });
 });
