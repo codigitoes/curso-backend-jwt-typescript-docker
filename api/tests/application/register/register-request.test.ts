@@ -5,6 +5,7 @@ describe('register user request', () => {
     it('should create an user', () => {
         const sut: UserRegisterRequest = UserMother.UserRegisterRequest();
 
+        expect(sut.id).toBeDefined();
         expect(sut.name).toBeDefined();
         expect(sut.email).toBeDefined();
         expect(sut.password).toBeDefined();

@@ -4,14 +4,17 @@ import { faker } from '@faker-js/faker';
 import User from '../../src/core/user/user';
 import Password from '../../src/core/user/password';
 import UserRegisterRequest from '../../src/core/application/register/user-register-request';
+import Id from '../../src/core/user/id';
 
 class UserMother {
     public static UserRegisterRequest(
+        id?: string,
         name?: string,
         email?: string,
         password?: string
     ): UserRegisterRequest {
         return new UserRegisterRequest(
+            UserMother.Id(id).value,
             UserMother.Name(name).value,
             UserMother.Email(email).value,
             UserMother.Password(password).value
@@ -38,6 +41,10 @@ class UserMother {
         );
     }
 
+    public static IdEmpty(): Id {
+        return new Id('');
+    }
+
     public static NameEmpty(): Name {
         return new Name('');
     }
@@ -62,8 +69,14 @@ class UserMother {
         return new Password('a'.repeat(Password.MAXIMUM_LENGTH + 1));
     }
 
-    public static User(email?: string, name?: string, password?: string): User {
+    public static User(
+        id?: string,
+        email?: string,
+        name?: string,
+        password?: string
+    ): User {
         return new User(
+            UserMother.Id(id),
             UserMother.Name(name),
             UserMother.Email(email),
             UserMother.Password(password)
@@ -72,6 +85,10 @@ class UserMother {
 
     public static Email(email?: string): Email {
         return new Email(email ? email : faker.internet.email());
+    }
+
+    public static Id(id?: string): Id {
+        return new Id(id ? id : Id.generateRandomUuidV4());
     }
 }
 
