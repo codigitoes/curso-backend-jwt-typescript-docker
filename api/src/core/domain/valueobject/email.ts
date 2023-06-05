@@ -1,4 +1,4 @@
-import InvalidUserEmailException from '../domain/exception/invalid-user-email-exception';
+import InvalidUserEmailException from '../exception/invalid-user-email-exception';
 
 class Email {
     public constructor(public readonly value: string) {

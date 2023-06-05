@@ -1,4 +1,4 @@
-import InvalidUserPasswordException from '../domain/exception/invalid-user-password-exception';
+import InvalidUserPasswordException from '../exception/invalid-user-password-exception';
 
 class Password {
     public static MINIMUM_LENGTH: number = 3;

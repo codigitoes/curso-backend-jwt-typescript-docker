@@ -1,10 +1,10 @@
-import Email from '../../src/core/user/email';
-import Name from '../../src/core/user/name';
+import Email from '../../src/core/domain/valueobject/email';
 import { faker } from '@faker-js/faker';
-import User from '../../src/core/user/user';
-import Password from '../../src/core/user/password';
+import User from '../../src/core/domain/model/user';
 import UserRegisterRequest from '../../src/core/application/register/user-register-request';
-import Id from '../../src/core/user/id';
+import Password from '../../src/core/domain/valueobject/password';
+import Id from '../../src/core/domain/valueobject/id';
+import Name from '../../src/core/domain/valueobject/name';
 
 class UserMother {
     public static UserRegisterRequest(
@@ -77,8 +77,14 @@ class UserMother {
         return new Password('a'.repeat(Password.MAXIMUM_LENGTH + 1));
     }
 
-    public static User(email?: string, name?: string, password?: string): User {
+    public static User(
+        id?: string,
+        email?: string,
+        name?: string,
+        password?: string
+    ): User {
         return new User(
+            UserMother.Id(id),
             UserMother.Name(name),
             UserMother.Email(email),
             UserMother.Password(password)

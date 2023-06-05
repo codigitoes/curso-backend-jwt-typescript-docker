@@ -1,5 +1,5 @@
-import InvalidUserIdException from '../domain/exception/invalid-user-id-exception';
 import crypto from 'crypto';
+import InvalidUserIdException from '../exception/invalid-user-id-exception';
 
 class Id {
     public static random(): Id {

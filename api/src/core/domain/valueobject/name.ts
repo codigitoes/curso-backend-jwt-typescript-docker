@@ -1,4 +1,4 @@
-import InvalidUserNameException from '../domain/exception/invalid-user-name-exception';
+import InvalidUserNameException from '../exception/invalid-user-name-exception';
 
 class Name {
     public static MINIMUM_LENGTH: number = 3;

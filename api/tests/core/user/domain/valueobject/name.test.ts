@@ -1,6 +1,6 @@
-import InvalidUserNameException from '../src/core/domain/exception/invalid-user-name-exception';
-import Name from '../src/core/user/name';
-import UserMother from './mother/user.mother';
+import InvalidUserNameException from '../../../../../src/core/domain/exception/invalid-user-name-exception';
+import Name from '../../../../../src/core/domain/valueobject/name';
+import UserMother from '../../../../mother/user.mother';
 
 describe('name', () => {
     it('should create with valid value, only letters 3-25 chars', () => {
