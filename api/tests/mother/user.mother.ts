@@ -3,8 +3,20 @@ import Name from '../../src/core/user/name';
 import { faker } from '@faker-js/faker';
 import User from '../../src/core/user/user';
 import Password from '../../src/core/user/password';
+import UserRegisterRequest from '../../src/core/application/register/user-register-request';
 
 class UserMother {
+    public static UserRegisterRequest(
+        name?: string,
+        email?: string,
+        password?: string
+    ): UserRegisterRequest {
+        return new UserRegisterRequest(
+            UserMother.Name(name).value,
+            UserMother.Email(email).value,
+            UserMother.Password(password).value
+        );
+    }
     public static Name(name?: string): Name {
         return new Name(
             name
