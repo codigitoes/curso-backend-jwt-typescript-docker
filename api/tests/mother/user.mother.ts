@@ -8,11 +8,13 @@ import Id from '../../src/core/user/id';
 
 class UserMother {
     public static UserRegisterRequest(
+        id?: string,
         name?: string,
         email?: string,
         password?: string
     ): UserRegisterRequest {
         return new UserRegisterRequest(
+            UserMother.Id(id).value,
             UserMother.Name(name).value,
             UserMother.Email(email).value,
             UserMother.Password(password).value
