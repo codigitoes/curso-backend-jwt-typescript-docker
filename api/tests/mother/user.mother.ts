@@ -50,8 +50,12 @@ class UserMother {
         return new Password('a'.repeat(Password.MAXIMUM_LENGTH + 1));
     }
 
-    public static User(email?: string, name?: string): User {
-        return new User(UserMother.Name(name), UserMother.Email(email));
+    public static User(email?: string, name?: string, password?: string): User {
+        return new User(
+            UserMother.Name(name),
+            UserMother.Email(email),
+            UserMother.Password(password)
+        );
     }
 
     public static Email(email?: string): Email {
