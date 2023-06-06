@@ -14,10 +14,12 @@ class UserMother {
         password?: string
     ): UserRegisterRequest {
         return new UserRegisterRequest(
-            UserMother.Id(id).value,
-            UserMother.Name(name).value,
-            UserMother.Email(email).value,
-            UserMother.Password(password).value
+            id !== undefined ? id : UserMother.Id(id).value,
+            name !== undefined ? name : UserMother.Name(name).value,
+            email !== undefined ? email : UserMother.Email(email).value,
+            password !== undefined
+                ? password
+                : UserMother.Password(password).value
         );
     }
     public static Name(name?: string): Name {
