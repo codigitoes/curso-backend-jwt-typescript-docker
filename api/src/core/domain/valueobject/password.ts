@@ -2,7 +2,7 @@ import InvalidUserPasswordException from '../exception/invalid-user-password-exc
 
 class Password {
     public static MINIMUM_LENGTH: number = 3;
-    public static MAXIMUM_LENGTH: number = 100;
+    public static MAXIMUM_LENGTH: number = 200;
 
     public constructor(public readonly value: string) {
         this.validateOrThrowException(value);
