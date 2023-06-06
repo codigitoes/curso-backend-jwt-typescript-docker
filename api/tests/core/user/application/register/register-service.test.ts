@@ -10,8 +10,10 @@ import UserMother from '../../../../mother/user.mother';
 
 class UserRepositoryImp implements UserRepository {
     private createCalled: boolean = false;
+    private model: User | null = null;
 
     create(model: User): void {
+        this.model = model;
         this.createCalled = true;
     }
 
