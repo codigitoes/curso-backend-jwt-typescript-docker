@@ -5,8 +5,36 @@ import UserRegisterRequest from '../../src/core/application/register/user-regist
 import Password from '../../src/core/domain/valueobject/password';
 import Id from '../../src/core/domain/valueobject/id';
 import Name from '../../src/core/domain/valueobject/name';
+import InvalidUserEmailException from '../../src/core/domain/exception/invalid-user-email-exception';
+import InvalidUserPasswordException from '../../src/core/domain/exception/invalid-user-password-exception';
+import InvalidUserNameException from '../../src/core/domain/exception/invalid-user-name-exception';
+import InvalidUserIdException from '../../src/core/domain/exception/invalid-user-id-exception';
 
 class UserMother {
+    public static InvalidUserEmailException(
+        message?: string
+    ): InvalidUserEmailException {
+        return new InvalidUserEmailException(message);
+    }
+
+    public static InvalidUserNameException(
+        message?: string
+    ): InvalidUserNameException {
+        return new InvalidUserNameException(message);
+    }
+
+    public static InvalidUserPasswordException(
+        message?: string
+    ): InvalidUserPasswordException {
+        return new InvalidUserPasswordException(message);
+    }
+
+    public static InvalidUserIdException(
+        message?: string
+    ): InvalidUserIdException {
+        return new InvalidUserIdException(message);
+    }
+
     public static UserRegisterRequest(
         id?: string,
         name?: string,

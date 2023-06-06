@@ -1,8 +1,9 @@
 import InvalidUserPasswordException from '../../../../../src/core/domain/exception/invalid-user-password-exception';
+import UserMother from '../../../../mother/user.mother';
 
 describe('invalid password exception', () => {
     it('should can create without value', () => {
-        const sut = new InvalidUserPasswordException();
+        const sut = UserMother.InvalidUserPasswordException();
 
         const message: string = sut.message;
 
@@ -12,7 +13,7 @@ describe('invalid password exception', () => {
     });
 
     it('should can create with a value', () => {
-        const sut = new InvalidUserPasswordException('any value');
+        const sut = UserMother.InvalidUserPasswordException('any value');
 
         const message: string = sut.message;
 

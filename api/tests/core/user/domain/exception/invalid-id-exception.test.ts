@@ -1,8 +1,9 @@
 import InvalidUserIdException from '../../../../../src/core/domain/exception/invalid-user-id-exception';
+import UserMother from '../../../../mother/user.mother';
 
 describe('invalid id exception', () => {
     it('should can create without value', () => {
-        const sut = new InvalidUserIdException();
+        const sut = UserMother.InvalidUserIdException();
 
         const message: string = sut.message;
 
@@ -12,7 +13,7 @@ describe('invalid id exception', () => {
     });
 
     it('should can create with a value', () => {
-        const sut = new InvalidUserIdException('any value');
+        const sut = UserMother.InvalidUserIdException('any value');
 
         const message: string = sut.message;
 
