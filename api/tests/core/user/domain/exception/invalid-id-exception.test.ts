@@ -2,6 +2,22 @@ import InvalidUserIdException from '../../../../../src/core/domain/exception/inv
 
 describe('invalid id exception', () => {
     it('should can create without value', () => {
-        expect(new InvalidUserIdException()).toBeInstanceOf(Error);
+        const sut = new InvalidUserIdException();
+
+        const message: string = sut.message;
+
+        expect(message).toStrictEqual(
+            `${InvalidUserIdException.DEFAULT_MESSAGE} ""`
+        );
+    });
+
+    it('should can create with a value', () => {
+        const sut = new InvalidUserIdException('any value');
+
+        const message: string = sut.message;
+
+        expect(message).toStrictEqual(
+            `${InvalidUserIdException.DEFAULT_MESSAGE} "any value"`
+        );
     });
 });
