@@ -10,6 +10,7 @@ import InvalidUserPasswordException from '../../src/core/domain/exception/invali
 import InvalidUserNameException from '../../src/core/domain/exception/invalid-user-name-exception';
 import InvalidUserIdException from '../../src/core/domain/exception/invalid-user-id-exception';
 import UserNotFoundException from '../../src/core/domain/exception/user-not-found-exception';
+import UserLoginRequest from '../../src/core/application/login/user-login-request';
 
 class UserMother {
     public static UserNotFoundException(
@@ -57,6 +58,19 @@ class UserMother {
                 : UserMother.Password(password).value
         );
     }
+
+    public static UserLoginRequest(
+        email?: string,
+        password?: string
+    ): UserLoginRequest {
+        return new UserLoginRequest(
+            email !== undefined ? email : UserMother.Email(email).value,
+            password !== undefined
+                ? password
+                : UserMother.Password(password).value
+        );
+    }
+
     public static Name(name?: string): Name {
         return new Name(
             name

@@ -2,7 +2,7 @@ import UserRegisterRequest from '../../../../../src/core/application/register/us
 import UserMother from '../../../../mother/user.mother';
 
 describe('register user request', () => {
-    it('should create an user', () => {
+    it('should have id name email and password', () => {
         const sut: UserRegisterRequest = UserMother.UserRegisterRequest();
 
         expect(sut.id).toBeDefined();

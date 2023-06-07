@@ -1,4 +1,4 @@
-import Hasher from '../../../../../src/core/domain/contract/hasher';
+import Hasher from '../../../../src/core/domain/contract/hasher';
 
 class HasherImp implements Hasher {
     private hashCalled: boolean = false;
