@@ -6,10 +6,10 @@ import InvalidUserNameException from '../../../../../src/core/domain/exception/i
 import InvalidUserPasswordException from '../../../../../src/core/domain/exception/invalid-user-password-exception';
 import UserRepository from '../../../../../src/core/domain/repository/user-repository';
 import UserMother from '../../../../mother/user.mother';
+import UserRepositoryInMemory from '../user-repository-in-memory';
 import HasherImp from './hasher-imp';
-import UserRepositoryImp from './user-repository-imp';
 
-const repository: UserRepository = new UserRepositoryImp();
+const repository: UserRepository = new UserRepositoryInMemory();
 const hasher: Hasher = new HasherImp();
 
 const getService = () => {
@@ -22,7 +22,7 @@ describe('register user service', () => {
         sut.execute(UserMother.UserRegisterRequest());
 
         expect(
-            (repository as UserRepositoryImp).createHaveBeenCalled()
+            (repository as UserRepositoryInMemory).createHaveBeenCalled()
         ).toBeTruthy();
         expect((hasher as HasherImp).hashHaveBeenCalled()).toBeTruthy();
     });

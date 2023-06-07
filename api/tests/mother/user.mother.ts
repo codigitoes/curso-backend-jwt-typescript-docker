@@ -9,8 +9,15 @@ import InvalidUserEmailException from '../../src/core/domain/exception/invalid-u
 import InvalidUserPasswordException from '../../src/core/domain/exception/invalid-user-password-exception';
 import InvalidUserNameException from '../../src/core/domain/exception/invalid-user-name-exception';
 import InvalidUserIdException from '../../src/core/domain/exception/invalid-user-id-exception';
+import UserNotFoundException from '../../src/core/domain/exception/user-not-found-exception';
 
 class UserMother {
+    public static UserNotFoundException(
+        message?: string
+    ): UserNotFoundException {
+        return new UserNotFoundException(message);
+    }
+
     public static InvalidUserEmailException(
         message?: string
     ): InvalidUserEmailException {
