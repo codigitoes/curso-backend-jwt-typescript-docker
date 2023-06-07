@@ -22,7 +22,7 @@ class HasherImp implements Hasher {
         this.hashCalled = false;
         unhashed;
         hashed;
-        return false;
+        return true;
     }
 }
 
