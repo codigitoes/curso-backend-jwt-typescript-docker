@@ -1,5 +1,5 @@
-import Hasher from '../../../../../src/core/domain/contract/hasher';
-import HasherBCrypt from '../../../../../src/core/infrastructure/helper/hasher.bcrypt';
+import Hasher from '../../../../../src/core/user/domain/contract/hasher';
+import HasherBCrypt from '../../../../../src/core/user/infrastructure/helper/hasher.bcrypt';
 
 describe('bcrypt hasher implementation', () => {
     it('should hash a plain string', () => {

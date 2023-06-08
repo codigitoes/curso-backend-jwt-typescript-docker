@@ -1,4 +1,4 @@
-import UserNotFoundException from '../../../../../src/core/domain/exception/user-not-found-exception';
+import UserNotFoundException from '../../../../../src/core/user/domain/exception/user-not-found-exception';
 import UserMother from '../../../../mother/user.mother';
 
 describe('user not found exception', () => {

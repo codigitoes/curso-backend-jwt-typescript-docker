@@ -1,5 +1,5 @@
-import InvalidUserPasswordException from '../../../../../src/core/domain/exception/invalid-user-password-exception';
-import Name from '../../../../../src/core/domain/valueobject/name';
+import InvalidUserPasswordException from '../../../../../src/core/user/domain/exception/invalid-user-password-exception';
+import Name from '../../../../../src/core/user/domain/valueobject/name';
 import UserMother from '../../../../mother/user.mother';
 
 describe('password', () => {

@@ -1,5 +1,5 @@
-import InvalidUserIdException from '../../../../../src/core/domain/exception/invalid-user-id-exception';
-import Id from '../../../../../src/core/domain/valueobject/id';
+import InvalidUserIdException from '../../../../../src/core/user/domain/exception/invalid-user-id-exception';
+import Id from '../../../../../src/core/user/domain/valueobject/id';
 import UserMother from '../../../../mother/user.mother';
 
 const VALID_UUID_V4 = '2a89bdf7-af55-485d-8e51-32fdbbccd35e';

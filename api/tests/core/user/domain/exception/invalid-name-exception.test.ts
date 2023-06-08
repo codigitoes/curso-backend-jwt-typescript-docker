@@ -1,4 +1,4 @@
-import InvalidUserNameException from '../../../../../src/core/domain/exception/invalid-user-name-exception';
+import InvalidUserNameException from '../../../../../src/core/user/domain/exception/invalid-user-name-exception';
 import UserMother from '../../../../mother/user.mother';
 
 describe('invalid name exception', () => {

@@ -1,4 +1,4 @@
-import InvalidUserPasswordException from '../../../../../src/core/domain/exception/invalid-user-password-exception';
+import InvalidUserPasswordException from '../../../../../src/core/user/domain/exception/invalid-user-password-exception';
 import UserMother from '../../../../mother/user.mother';
 
 describe('invalid password exception', () => {

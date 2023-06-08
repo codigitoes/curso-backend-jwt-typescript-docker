@@ -1,5 +1,5 @@
-import InvalidUserNameException from '../../../../../src/core/domain/exception/invalid-user-name-exception';
-import Name from '../../../../../src/core/domain/valueobject/name';
+import InvalidUserNameException from '../../../../../src/core/user/domain/exception/invalid-user-name-exception';
+import Name from '../../../../../src/core/user/domain/valueobject/name';
 import UserMother from '../../../../mother/user.mother';
 
 describe('name', () => {

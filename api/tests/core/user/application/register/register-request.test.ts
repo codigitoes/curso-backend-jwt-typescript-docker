@@ -1,4 +1,4 @@
-import UserRegisterRequest from '../../../../../src/core/application/register/user-register-request';
+import UserRegisterRequest from '../../../../../src/core/user/application/register/user-register-request';
 import UserMother from '../../../../mother/user.mother';
 
 describe('register user request', () => {

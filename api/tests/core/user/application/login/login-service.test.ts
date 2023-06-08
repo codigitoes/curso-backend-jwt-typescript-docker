@@ -1,7 +1,9 @@
-import UserLoginService from '../../../../../src/core/application/login/user-login-service';
-import Hasher from '../../../../../src/core/domain/contract/hasher';
-import User from '../../../../../src/core/domain/model/user';
-import UserRepository from '../../../../../src/core/domain/repository/user-repository';
+import UserLoginResponse from '../../../../../src/core/user/application/login/user-login-response';
+import UserLoginService from '../../../../../src/core/user/application/login/user-login-service';
+import Hasher from '../../../../../src/core/user/domain/contract/hasher';
+import InvalidUserCredentialException from '../../../../../src/core/user/domain/exception/invalid-user-credential-exception';
+import User from '../../../../../src/core/user/domain/model/user';
+import UserRepository from '../../../../../src/core/user/domain/repository/user-repository';
 import UserMother from '../../../../mother/user.mother';
 import HasherImp from '../hasher-imp';
 import UserRepositoryInMemory from '../user-repository-in-memory';
@@ -14,20 +16,35 @@ const getService = () => {
 };
 
 describe('login user service', () => {
-    it('should result true on user exists', () => {
+    it('should result a login response on login success', () => {
         const user: User = UserMother.User();
         const email: string = user.email.value;
         const password: string = user.password.value;
         repository.create(user);
 
         const sut: UserLoginService = getService();
-        const result: boolean = sut.execute(
+        const result: UserLoginResponse = sut.execute(
             UserMother.UserLoginRequest(email, password)
         );
 
-        expect(result).toBeTruthy();
+        expect(result.token).toBeDefined();
         expect(
             (repository as UserRepositoryInMemory).getHaveBeenCalled()
         ).toBeTruthy();
+        expect((hasher as HasherImp).equalsHaveBeenCalled()).toBeTruthy();
+    });
+
+    it('should throw invalid user credentials on login failed ', () => {
+        const user: User = UserMother.User();
+        const email: string = user.email.value;
+        repository.create(user);
+
+        const sut: UserLoginService = getService();
+
+        expect(() => {
+            sut.execute(
+                UserMother.UserLoginRequest(email, 'any other password')
+            );
+        }).toThrowError(InvalidUserCredentialException);
     });
 });

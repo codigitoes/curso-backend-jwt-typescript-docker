@@ -1,4 +1,4 @@
-import UserLoginRequest from '../../../../../src/core/application/login/user-login-request';
+import UserLoginRequest from '../../../../../src/core/user/application/login/user-login-request';
 import UserMother from '../../../../mother/user.mother';
 
 describe('login user request', () => {

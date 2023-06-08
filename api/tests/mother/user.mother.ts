@@ -1,18 +1,23 @@
-import Email from '../../src/core/domain/valueobject/email';
 import { faker } from '@faker-js/faker';
-import User from '../../src/core/domain/model/user';
-import UserRegisterRequest from '../../src/core/application/register/user-register-request';
-import Password from '../../src/core/domain/valueobject/password';
-import Id from '../../src/core/domain/valueobject/id';
-import Name from '../../src/core/domain/valueobject/name';
-import InvalidUserEmailException from '../../src/core/domain/exception/invalid-user-email-exception';
-import InvalidUserPasswordException from '../../src/core/domain/exception/invalid-user-password-exception';
-import InvalidUserNameException from '../../src/core/domain/exception/invalid-user-name-exception';
-import InvalidUserIdException from '../../src/core/domain/exception/invalid-user-id-exception';
-import UserNotFoundException from '../../src/core/domain/exception/user-not-found-exception';
-import UserLoginRequest from '../../src/core/application/login/user-login-request';
+import InvalidUserCredentialException from '../../src/core/user/domain/exception/invalid-user-credential-exception';
+import UserNotFoundException from '../../src/core/user/domain/exception/user-not-found-exception';
+import InvalidUserNameException from '../../src/core/user/domain/exception/invalid-user-name-exception';
+import InvalidUserIdException from '../../src/core/user/domain/exception/invalid-user-id-exception';
+import UserLoginRequest from '../../src/core/user/application/login/user-login-request';
+import InvalidUserEmailException from '../../src/core/user/domain/exception/invalid-user-email-exception';
+import InvalidUserPasswordException from '../../src/core/user/domain/exception/invalid-user-password-exception';
+import UserRegisterRequest from '../../src/core/user/application/register/user-register-request';
+import Name from '../../src/core/user/domain/valueobject/name';
+import Password from '../../src/core/user/domain/valueobject/password';
+import Id from '../../src/core/user/domain/valueobject/id';
+import User from '../../src/core/user/domain/model/user';
+import Email from '../../src/core/user/domain/valueobject/email';
 
 class UserMother {
+    public static InvalidUserCredentialException(): InvalidUserCredentialException {
+        return new InvalidUserCredentialException();
+    }
+
     public static UserNotFoundException(
         message?: string
     ): UserNotFoundException {

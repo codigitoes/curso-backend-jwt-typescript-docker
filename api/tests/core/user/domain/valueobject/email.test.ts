@@ -1,4 +1,4 @@
-import InvalidUserEmailException from '../../../../../src/core/domain/exception/invalid-user-email-exception';
+import InvalidUserEmailException from '../../../../../src/core/user/domain/exception/invalid-user-email-exception';
 import UserMother from '../../../../mother/user.mother';
 
 describe('email', () => {

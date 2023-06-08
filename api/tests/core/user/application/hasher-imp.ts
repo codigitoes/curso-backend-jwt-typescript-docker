@@ -1,12 +1,21 @@
-import Hasher from '../../../../src/core/domain/contract/hasher';
+import Hasher from '../../../../src/core/user/domain/contract/hasher';
 
 class HasherImp implements Hasher {
     private hashCalled: boolean = false;
+    private equalsCalled: boolean = false;
 
     hashHaveBeenCalled(): boolean {
         const result: boolean = this.hashCalled;
 
         this.hashCalled = false;
+
+        return result;
+    }
+
+    equalsHaveBeenCalled(): boolean {
+        const result: boolean = this.equalsCalled;
+
+        this.equalsCalled = false;
 
         return result;
     }
@@ -19,10 +28,10 @@ class HasherImp implements Hasher {
     }
 
     equals(unhashed: string, hashed: string): boolean {
-        this.hashCalled = false;
+        this.equalsCalled = true;
         unhashed;
         hashed;
-        return true;
+        return unhashed === hashed;
     }
 }
 

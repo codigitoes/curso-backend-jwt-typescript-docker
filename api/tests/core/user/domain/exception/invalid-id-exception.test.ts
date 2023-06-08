@@ -1,4 +1,4 @@
-import InvalidUserIdException from '../../../../../src/core/domain/exception/invalid-user-id-exception';
+import InvalidUserIdException from '../../../../../src/core/user/domain/exception/invalid-user-id-exception';
 import UserMother from '../../../../mother/user.mother';
 
 describe('invalid id exception', () => {

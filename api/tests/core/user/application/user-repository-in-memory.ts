@@ -1,7 +1,7 @@
-import UserNotFoundException from '../../../../src/core/domain/exception/user-not-found-exception';
-import User from '../../../../src/core/domain/model/user';
-import UserRepository from '../../../../src/core/domain/repository/user-repository';
-import Email from '../../../../src/core/domain/valueobject/email';
+import UserNotFoundException from '../../../../src/core/user/domain/exception/user-not-found-exception';
+import User from '../../../../src/core/user/domain/model/user';
+import UserRepository from '../../../../src/core/user/domain/repository/user-repository';
+import Email from '../../../../src/core/user/domain/valueobject/email';
 
 class UserRepositoryInMemory implements UserRepository {
     private users: User[] = [];
