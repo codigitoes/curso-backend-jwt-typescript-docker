@@ -6,7 +6,7 @@ import User from '../../../../../src/core/user/domain/model/user';
 import UserRepository from '../../../../../src/core/user/domain/repository/user-repository';
 import UserMother from '../../../../mother/user.mother';
 import HasherImp from '../hasher-imp';
-import UserRepositoryInMemory from '../user-repository-in-memory';
+import UserRepositoryInMemory from '../../infrastructure/repository/user-repository-in-memory';
 
 const repository: UserRepository = new UserRepositoryInMemory();
 const hasher: Hasher = new HasherImp();
@@ -16,14 +16,14 @@ const getService = () => {
 };
 
 describe('login user service', () => {
-    it('should result a login response on login success', () => {
+    it('should result a login response on login success', async () => {
         const user: User = UserMother.User();
         const email: string = user.email.value;
         const password: string = user.password.value;
         repository.create(user);
 
         const sut: UserLoginService = getService();
-        const result: UserLoginResponse = sut.execute(
+        const result: UserLoginResponse = await sut.execute(
             UserMother.UserLoginRequest(email, password)
         );
 
@@ -34,17 +34,19 @@ describe('login user service', () => {
         expect((hasher as HasherImp).equalsHaveBeenCalled()).toBeTruthy();
     });
 
-    it('should throw invalid user credentials on login failed ', () => {
+    it('should throw invalid user credentials on login failed ', async () => {
         const user: User = UserMother.User();
         const email: string = user.email.value;
         repository.create(user);
 
         const sut: UserLoginService = getService();
 
-        expect(() => {
-            sut.execute(
+        try {
+            await sut.execute(
                 UserMother.UserLoginRequest(email, 'any other password')
             );
-        }).toThrowError(InvalidUserCredentialException);
+        } catch (error) {
+            expect(error).toBeInstanceOf(InvalidUserCredentialException);
+        }
     });
 });

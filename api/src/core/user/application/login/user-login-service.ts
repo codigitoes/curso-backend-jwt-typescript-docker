@@ -12,8 +12,8 @@ class UserLoginService {
         private readonly hasher: Hasher
     ) {}
 
-    execute(request: UserLoginRequest): UserLoginResponse {
-        const model: User = this.repository.getByEmail(
+    async execute(request: UserLoginRequest): Promise<UserLoginResponse> {
+        const model: User = await this.repository.getByEmail(
             new Email(request.email)
         );
 
