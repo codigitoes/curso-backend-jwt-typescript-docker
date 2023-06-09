@@ -1,12 +1,13 @@
 import UserNotFoundException from '../../domain/exception/user-not-found-exception';
 import User from '../../domain/model/user';
+import UserRepository from '../../domain/repository/user-repository';
 import Email from '../../domain/valueobject/email';
 import Id from '../../domain/valueobject/id';
 import Name from '../../domain/valueobject/name';
 import Password from '../../domain/valueobject/password';
 import UserDocument from './user-document';
 
-class UserRespositoryMongoose {
+class UserRespositoryMongoose implements UserRepository {
     constructor() {}
 
     async create(model: User): Promise<void> {

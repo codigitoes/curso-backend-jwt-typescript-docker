@@ -8,7 +8,7 @@
     "format": "prettier --write ./src",
     "dev": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules ./src/start.ts",
     "start": "npm run dist && node ./dist/src/start.js",
-    "test": "NODE_ENV=dev jest tests --watchAll",
+    "test": "NODE_ENV=dev jest --testEnvironment=node --runInBand tests --watchAll",
     "dist": "rm -r ./dist; tsc && cp .env dist/",
     "clean": "rm -r ./dist; exit 0"
   },
