@@ -6,7 +6,7 @@ import UserRespositoryMongoose from '../../../../../src/core/user/infrastructure
 import UserMother from '../../../../mother/user.mother';
 
 describe('mongo user repository', () => {
-    it('should save an user', async () => {
+    it('should save an user, get and , all in one :()', async () => {
         const environment: EnvironmentLoader = new EnvironmentLoader();
         await MongooseConnection.connectDB(environment.getDsn());
         const user: User = UserMother.User();
